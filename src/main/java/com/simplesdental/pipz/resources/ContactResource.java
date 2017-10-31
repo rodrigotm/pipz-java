@@ -8,19 +8,19 @@ import com.simplesdental.pipz.helpers.Json;
 import com.simplesdental.pipz.helpers.request.Request;
 import com.simplesdental.pipz.helpers.request.RequestAuth;
 import com.simplesdental.pipz.helpers.request.RequestError;
-import com.simplesdental.pipz.models.Company;
+import com.simplesdental.pipz.models.Contact;
 
-public class CompanyResource {
+public class ContactResource {
 
-	public final static String RESOURCE_V1 = "v1/company";
+	public final static String RESOURCE_V1 = "v1/contact";
 
-	public static Company create(RequestAuth auth, Company company) {
+	public static Contact create(RequestAuth auth, Contact contact) {
 		try {
-			Request request = Request.resource(RESOURCE_V1).method(HttpMethods.POST).auth(auth).body(Json.toString(company));
+			Request request = Request.resource(RESOURCE_V1).method(HttpMethods.POST).auth(auth).body(Json.toString(contact));
 			HttpResponse response = request.send();
 
 			if (response.isSuccessStatusCode()) {
-				return Json.fromJson(response.parseAsString(), Company.class);
+				return Json.fromJson(response.parseAsString(), Contact.class);
 			}
 
 			throw new RequestError(response.getStatusCode());
@@ -30,16 +30,16 @@ public class CompanyResource {
 		}
 	}
 
-	public static Company update(RequestAuth auth, String idCompany, Company company) {
+	public static Contact update(RequestAuth auth, String idContact, Contact contact) {
 		try {
 
-			String resource = Request.path(RESOURCE_V1, idCompany);
+			String resource = Request.path(RESOURCE_V1, idContact);
 
-			Request request = Request.resource(resource).method(HttpMethods.PATCH).auth(auth).body(Json.toString(company));
+			Request request = Request.resource(resource).method(HttpMethods.PATCH).auth(auth).body(Json.toString(contact));
 			HttpResponse response = request.send();
 
 			if (response.isSuccessStatusCode()) {
-				return Json.fromJson(response.parseAsString(), Company.class);
+				return Json.fromJson(response.parseAsString(), Contact.class);
 			}
 
 			throw new RequestError(response.getStatusCode());
@@ -49,10 +49,10 @@ public class CompanyResource {
 		}
 	}
 
-	public static HttpResponse delete(RequestAuth auth, String idCompany) {
+	public static HttpResponse delete(RequestAuth auth, String idContact) {
 		try {
 
-			String resource = Request.path(RESOURCE_V1, idCompany);
+			String resource = Request.path(RESOURCE_V1, idContact);
 
 			Request request = Request.resource(resource).method(HttpMethods.POST).auth(auth);
 			HttpResponse response = request.send();

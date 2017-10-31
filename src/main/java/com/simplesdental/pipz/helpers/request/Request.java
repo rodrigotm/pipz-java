@@ -2,7 +2,9 @@ package com.simplesdental.pipz.helpers.request;
 
 import java.io.IOException;
 
+import com.google.api.client.http.BasicAuthentication;
 import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.HttpHeaders;
 import com.google.api.client.http.HttpMethods;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpResponse;
@@ -12,8 +14,8 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 
 public class Request {
 	public static HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
-	public static final String API = "https://api.nfe.io";
-	public static final String API_OPEN = "https://open.nfe.io";
+	public static final String API = "https://api.pipz.io";
+	public static final String API_OPEN = "https://app.pipz.io";
 
 	public static String createResourceUri(String resource) {
 		return createResourceUri(resource, false);
@@ -72,8 +74,16 @@ public class Request {
 		return this;
 	}
 
-	public Request auth(String key) throws IOException {
-		this.addParam("api_key", key);
+	public Request addHeader(String fieldName, Object value) {
+		HttpHeaders h = new HttpHeaders();
+		h.set(fieldName, value);
+		this.request.setHeaders(h);
+		return this;
+	}
+
+	public Request auth(RequestAuth auth) throws IOException {
+		BasicAuthentication basicAuthentication = new BasicAuthentication(auth.email, auth.token);
+		basicAuthentication.initialize(this.request);
 		return this;
 	}
 
