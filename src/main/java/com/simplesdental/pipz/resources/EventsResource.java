@@ -33,7 +33,7 @@ public class EventsResource {
 
 	public static HttpResponse track(TrackEvent trackEvent) {
 		try {
-			Request request = Request.resource(RESOURCE_V1).method(HttpMethods.POST).body(Json.toString(trackEvent));
+			Request request = Request.resource(RESOURCE_V1, true).method(HttpMethods.POST).body(Json.toString(trackEvent));
 			HttpResponse response = request.send();
 
 			if (response.isSuccessStatusCode()) {

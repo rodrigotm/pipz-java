@@ -56,6 +56,10 @@ public class Request {
 		return new Request(resource);
 	}
 
+	public static Request resource(String resource, boolean openApi) throws IOException {
+		return new Request(resource, openApi);
+	}
+
 	private HttpRequest request;
 	private GenericUrl url;
 
