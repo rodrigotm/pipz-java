@@ -1,6 +1,7 @@
 package com.simplesdental.pipz.helpers.request;
 
 import java.io.IOException;
+import java.util.concurrent.Future;
 
 import com.google.api.client.http.BasicAuthentication;
 import com.google.api.client.http.GenericUrl;
@@ -118,6 +119,10 @@ public class Request {
 
 	public HttpResponse send() throws IOException {
 		return this.request.execute();
+	}
+
+	public Future<HttpResponse> sendAsync() throws IOException {
+		return this.request.executeAsync();
 	}
 
 }
