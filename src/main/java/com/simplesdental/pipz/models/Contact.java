@@ -2,6 +2,7 @@ package com.simplesdental.pipz.models;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class Contact {
@@ -107,5 +108,5 @@ public class Contact {
 	public String utm_term;
 	public String uuid;
 	public String website;
-
+	public HashMap<String, Object> event;
 }

@@ -6,5 +6,4 @@ public class IdentifyEvent {
 	public String type;
 	public String writeKey;
 	public String userId;
-
 }

@@ -50,5 +50,4 @@ public class Company {
 	public Date update_date;
 	public String updated_by;
 	public String website;
-
 }
