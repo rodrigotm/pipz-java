@@ -11,10 +11,19 @@ import com.simplesdental.pipz.helpers.request.RequestError;
 import com.simplesdental.pipz.models.IdentifyEvent;
 import com.simplesdental.pipz.models.TrackEvent;
 
+/**
+ * @author rodrigoteixeira
+ *
+ */
 public class EventsResource {
 
 	public final static String RESOURCE_V1 = "v1/event";
 
+	/**
+	 * @param identifyEvent
+	 *            Object IdentifyEvent
+	 * @return Future<HttpResponse>
+	 */
 	public static Future<HttpResponse> identify(IdentifyEvent identifyEvent) {
 		try {
 			Request request = Request.resource(RESOURCE_V1, true).method(HttpMethods.POST).body(Json.toString(identifyEvent));
@@ -26,6 +35,11 @@ public class EventsResource {
 		}
 	}
 
+	/**
+	 * @param trackEvent
+	 *            Object trackEvent
+	 * @return Future<HttpResponse>
+	 */
 	public static Future<HttpResponse> track(TrackEvent trackEvent) {
 		try {
 			Request request = Request.resource(RESOURCE_V1, true).method(HttpMethods.POST).body(Json.toString(trackEvent));
