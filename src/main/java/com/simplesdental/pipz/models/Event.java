@@ -19,9 +19,7 @@ public class Event extends HashMap<String, Object> {
 
 	/**
 	 * @param eventName
-	 *            The name to event
 	 * @param json
-	 *            Properties to event
 	 */
 	public void addEvent(String eventName, JsonNode json) {
 		if (json == null) {
